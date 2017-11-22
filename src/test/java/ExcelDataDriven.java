@@ -2,6 +2,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.CTCell;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,10 +23,16 @@ public class ExcelDataDriven {
             try {
                 XSSFCell cell_a = row_a.getCell(1);
                 XSSFCell cell_b = row_a.getCell(2);
-                System.out.println(cell_a.getStringCellValue()+" - "+ cell_b.getStringCellValue());
+                XSSFCell cell_c = row_a.createCell(3);
+                cell_c.setCellValue(cell_a.getStringCellValue()+" - "+ cell_b.getStringCellValue());
+
+                System.out.println(cell_a.getStringCellValue()+" - "+ cell_b.getStringCellValue() + " - "+ cell_c.getStringCellValue());
+
             }catch (NullPointerException e){
                 System.out.println(" ");
             }
+
+
 
         }
 
